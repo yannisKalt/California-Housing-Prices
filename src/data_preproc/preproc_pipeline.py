@@ -13,8 +13,8 @@ class DataPreproc:
 
         Args:
             transforms (List[Callable]): A list of sequential transformations.
-            store_intermediate (bool, optional): Boolean flag in order to save the intermediate data representations.
-                                                 Defaults to False.
+            store_intermediate (bool, optional): Boolean flag in order to save the intermediate
+                                                 data representations. Defaults to False.
         """
         self._store_intermediate = store_intermediate
         self._transforms = transforms
