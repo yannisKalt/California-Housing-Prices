@@ -165,3 +165,7 @@ cython_debug/
 # hydra outputs
 outputs
 multirun
+
+# mlflow logs 
+logs
+mlruns

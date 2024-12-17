@@ -1,3 +1,9 @@
-predictor:
-  _target_: sklearn.linear_model.LinearRegression 
+pipeline:
+  _target_: src.core.modelling.model_pipeline.ModelPipeline
+  predictor: 
+    _target_:  sklearn.linear_model.LinearRegression
+  input_scaler: 
+    _target_: sklearn.preprocessing.StandardScaler
+  output_scaler: 
+    _target_: sklearn.preprocessing.StandardScaler
 tag: linear

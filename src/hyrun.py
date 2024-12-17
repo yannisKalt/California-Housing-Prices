@@ -1,12 +1,9 @@
 import hydra
-import warnings
 from omegaconf import DictConfig
-from tqdm import TqdmExperimentalWarning
 from rich import print
 import rootutils
 
 rootutils.setup_root(__file__, ".project-root", pythonpath="True")
-warnings.filterwarnings("ignore", category=TqdmExperimentalWarning)
 
 
 @hydra.main(config_path="../configs", config_name="config", version_base=None)
@@ -21,7 +18,6 @@ def main(conf: DictConfig):
             action_value,
         )
         print(f"Execution of action: {action_name} finished.")
-
     print("Execution of all actions finished.")
 
 

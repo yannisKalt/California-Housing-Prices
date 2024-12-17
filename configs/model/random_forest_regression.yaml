@@ -1,0 +1,7 @@
+pipeline:
+  _target_: src.core.modelling.model_pipeline.ModelPipeline
+  predictor: 
+    _target_:  sklearn.ensemble.RandomForestRegressor
+  input_scaler: null
+  output_scaler: null
+tag: random_forest_regressor

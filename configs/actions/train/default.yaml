@@ -1,13 +1,12 @@
 # @package actions
 train_model:
-   _target_: src.actions.train.train_model
+   _target_: src.actions.train_val.train_val
    data_dir: ${paths.data_dir}
    data_fn: ${dataset_output_fn}
+   log_dir: ${paths.log_dir}
    target_variable: ${dataset.target_variable}
-   predictor: ${model.predictor}
+   model_pipeline: ${model.pipeline}
    model_tag: ${model.tag}
-   input_scaler: ${input_scaler}
-   output_scaler: ${output_scaler}
-   tag: ${model.tag}
+   metrics: ${metrics}
    test_size: ${dataset.test_size}
    random_state: ${seed}

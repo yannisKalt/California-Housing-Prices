@@ -1,0 +1,11 @@
+mae:
+  _target_: sklearn.metrics.mean_absolute_error
+  _partial_: true
+
+r2:
+  _target_: sklearn.metrics.r2_score
+  _partial_: true
+
+mape:
+  _target_: sklearn.metrics.mean_absolute_percentage_error
+  _partial_: true
