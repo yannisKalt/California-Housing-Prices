@@ -5,6 +5,7 @@ from src.core.modelling.model_pipeline import ModelPipeline
 from typing import Dict, Callable
 import mlflow
 import pickle
+import json
 
 
 def train_val(
@@ -21,6 +22,11 @@ def train_val(
 
     # Load Model
     data: pd.DataFrame = pd.read_csv(os.path.join(data_dir, data_fn))
+    input_variables = sorted(data.columns.drop(target_variable))
+    model_meta = {
+        "input_variables": input_variables,
+        "target_variable": target_variable,
+    }
     X = data.drop(columns=target_variable).values
     y = data[target_variable].values
 
@@ -35,7 +41,12 @@ def train_val(
         mlflow.log_metrics(
             {name: f(y_pred=y_pred, y_true=y_test) for name, f in metrics.items()}
         )
-    # Store Model
-    os.makedirs(log_dir, exist_ok=True)
-    with open(os.path.join(log_dir, model_tag + ".pkl"), "wb") as fn:
+
+    # Save Model
+    storage_dir = os.path.join(log_dir, model_tag)
+    os.makedirs(storage_dir, exist_ok=True)
+    with open(os.path.join(storage_dir, "model.pkl"), "wb") as fn:
         pickle.dump(model_pipeline, fn)
+    # Store model input variables
+    with open(os.path.join(storage_dir, "meta.json"), "w") as fn:
+        json.dump(model_meta, fn)

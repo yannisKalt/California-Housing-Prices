@@ -169,3 +169,6 @@ multirun
 # mlflow logs 
 logs
 mlruns
+
+# debugging
+.vscode

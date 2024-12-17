@@ -4,7 +4,7 @@ defaults:
   - transforms: default
   - actions: all_actions
   - dataset: housing
-  - model: random_forest_regression
+  - model: random_forest_regression 
   - metrics: regression
 seed: 0
 

@@ -1,5 +1,5 @@
 _target_: src.core.data_preproc.feature_selection.filter_features
-target_variable: median_house_value
+target_variable: ${dataset.target_variable}
 corr_threshold: 0.15
 mi_threshold: 0.18
 _partial_: true
