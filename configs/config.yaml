@@ -1,0 +1,16 @@
+defaults:
+  - _self_
+  - paths: default
+  - transforms: default
+  - actions: all_actions
+  - dataset: housing
+  - model: linear_regression
+  - scalers/standard_scaler@input_scaler
+  - scalers/standard_scaler@output_scaler
+seed: 0
+
+# Preprocess Dataset Args
+dataset_output_fn: housing_default_preproc.csv
+
+# Experiment Args
+tag: default

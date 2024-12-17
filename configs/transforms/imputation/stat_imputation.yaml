@@ -1,0 +1,4 @@
+_target_: src.core.data_preproc.imputation.stat_imputation
+columns: [total_bedrooms]
+mode: median
+_partial_: true

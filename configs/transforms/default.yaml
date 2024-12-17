@@ -1,0 +1,8 @@
+defaults:
+  - _self_
+  - encoding/one_hot_encode
+  - outlier_removal/iqr
+  - imputation/stat_imputation
+  - feature_selection/filter_features
+
+  

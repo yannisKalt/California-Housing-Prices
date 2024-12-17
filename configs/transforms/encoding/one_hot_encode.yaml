@@ -1,0 +1,3 @@
+_target_: src.core.data_preproc.encoding.one_hot_encode
+columns:  [ocean_proximity]
+_partial_: true

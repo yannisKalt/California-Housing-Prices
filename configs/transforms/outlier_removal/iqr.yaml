@@ -1,0 +1,3 @@
+_target_: src.core.data_preproc.outlier_removal.iqr
+columns: [total_rooms, population, households, ocean_proximity_ISLAND]
+_partial_: true

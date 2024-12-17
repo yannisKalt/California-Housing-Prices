@@ -1,0 +1,9 @@
+# @package actions
+preproc_dataset:
+  _target_: src.actions.preprocess_data.preprocess_data
+  data_dir: ${paths.data_dir} 
+  data_fn: ${dataset.data_fn}
+  output_fn: ${dataset_output_fn}
+  transforms: ${transforms}
+  store_intermediate: false
+  
