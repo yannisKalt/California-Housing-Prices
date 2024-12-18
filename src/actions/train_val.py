@@ -22,7 +22,7 @@ def train_val(
 
     # Load Model
     data: pd.DataFrame = pd.read_csv(os.path.join(data_dir, data_fn))
-    input_variables = sorted(data.columns.drop(target_variable))
+    input_variables = list(data.columns.drop(target_variable))
     model_meta = {
         "input_variables": input_variables,
         "target_variable": target_variable,

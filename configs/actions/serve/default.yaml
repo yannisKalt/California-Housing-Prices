@@ -1,0 +1,7 @@
+# @package actions
+serve_model:
+   _target_: src.actions.serve.run_server
+   model_dir: ${paths.log_dir}
+   model_tag: ${model.tag}
+   host:  0.0.0.0
+   port: 8000
