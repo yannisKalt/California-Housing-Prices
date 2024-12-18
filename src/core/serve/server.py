@@ -7,29 +7,31 @@ import json
 
 
 class Server:
-    def __init__(self, model_dir, model_tag):
-        """
-        Initialize the Server with a model loaded from the given path.
-        """
-        self.model = self.load_model(os.path.join(model_dir, model_tag, "model.pkl"))
-        self.meta_dict = self.load_meta(os.path.join(model_dir, model_tag, "meta.json"))
+    def __init__(self, model_dir: str, model_tag: str):
+        """Simple Rest-API implementation with trivial input-data type validation
 
-        self.InputFeatures = self.construct_features_model(
+        Args:
+            model_dir (str): Directory where model data reside.
+            model_tag (str): The tag (id) of the model
+        """
+        self.model = self._load_model(os.path.join(model_dir, model_tag, "model.pkl"))
+        self.meta_dict = self._load_meta(
+            os.path.join(model_dir, model_tag, "meta.json")
+        )
+
+        self.InputFeatures = self._construct_features_model(
             self.meta_dict["input_variables"], "InputFeatures"
         )
-        self.OutputResult = self.construct_features_model(
+        self.OutputResult = self._construct_features_model(
             [self.meta_dict["target_variable"]], "OutputResult", output=True
         )
 
         self.app = FastAPI()  # Create FastAPI instance
-        self.setup_routes()  # Define API routes
+        self._setup_routes()  # Define API routes
 
-    def construct_features_model(
+    def _construct_features_model(
         self, variables: list, model_name: str, output: bool = False
     ):
-        """
-        Dynamically create a Pydantic model for input or output features.
-        """
         if output:
             # Output model has only one field for the target variable
             fields = {variables[0]: (float, Field(...))}
@@ -38,21 +40,21 @@ class Server:
             fields = {var: (float, Field(...)) for var in variables}
         return create_model(model_name, **fields)
 
-    def load_meta(self, meta_fn: str):
+    def _load_meta(self, meta_fn: str):
         """
         Load the model input/output featrues
         """
         with open(meta_fn, "r") as f:
             return json.load(f)
 
-    def load_model(self, model_path: str):
+    def _load_model(self, model_path: str):
         """
         Load the model from a .pkl file.
         """
         with open(model_path, "rb") as model_file:
             return pickle.load(model_file)
 
-    def setup_routes(self):
+    def _setup_routes(self):
         """
         Define API endpoints.
         """

@@ -1,15 +1,21 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.linear_model import LinearRegression
+from typing import Optional
 
 
 class ModelPipeline:
     def __init__(
         self,
         predictor: BaseEstimator,
-        input_scaler: TransformerMixin,
-        output_scaler: TransformerMixin,
+        input_scaler: Optional[TransformerMixin] = None,
+        output_scaler: Optional[TransformerMixin] = None,
     ):
+        """Model Pipeline API
+
+        Args:
+            predictor (BaseEstimator): sklearn based predictor
+            input_scaler (Optional[TransformerMixin], optional): Input data scaler. Defaults to None.
+            output_scaler (Optional[TransformerMixin], optional): Target variable scaler. Defaults to None.
+        """
         self._predictor = predictor
         self._input_scaler = input_scaler
         self._output_scaler = output_scaler

@@ -1,7 +1,7 @@
 defaults:
   - _self_
-  #- preproc_dataset: default 
-  #- train: default
+  - preproc_dataset: default 
+  - train: default
   - serve: default
   # this is a comment
   
