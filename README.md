@@ -1,4 +1,4 @@
-# Pfizer_Assessment
+# California Housing Prices
 
 ## Intro
 The core principle of this work is to design *modular* and *dynamic* end-to-end pipelines. The pipeline is divided into two main modules:
