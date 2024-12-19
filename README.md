@@ -46,5 +46,3 @@ to
 ```
 the pipeline will run with OLS instead of random forest.
 
-### Concluding
-While this is a simple implementation, I hope that the main design concepts are clear and insightful. Thanks for your time and consideration :)
